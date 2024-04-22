@@ -6,11 +6,10 @@ import "../../styles/Home/index.css";
 
 export function Landing() {
   return (
-      <div className="flex flex-col overflow-hidde home__landing">
+      <div className="flex flex-col overflow-hidden home__landing">
         <ContainerScroll
           titleComponent={
             <>
-            <h1></h1>
               <h1 className="text-3xl font-semibold text-black dark:text-white">
                 <span className="home__landing__p1">Unleash the power of</span>{" "}
                 <br />

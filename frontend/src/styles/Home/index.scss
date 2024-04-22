@@ -33,3 +33,9 @@
     -webkit-font-smoothing: antialiased;
   }
 }
+
+@media (max-width: 576px){
+  .home__landing__p1, .home__landing__p2, h1, .home__landing{
+    display: none;
+  }
+}
