@@ -3,6 +3,7 @@ import React, { useContext } from "react";
 // import Footer from "./Footer";
 import { Navigate } from "react-router-dom";
 import { AuthContext } from "../contexts/Auth";
+import Navbar from "./Navbar";
 
 export default function Layout({ children }) {
     const { user } = useContext(AuthContext);
@@ -12,7 +13,7 @@ export default function Layout({ children }) {
     ) : (
       <div className="grid min-h-screen grid-rows-[auto_1fr_auto]  ">
         <Navbar />
-        <main className="my-8 mx-[5vw] mb-10">{children}</main>
+        <main>{children}</main>
         {/* <Footer /> */}
       </div>
     );

@@ -1,13 +1,14 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { auth } from "../../firebase";
-import Landing from "../pages/Landing";
-import Themes from "../pages/Themes";
-import Login from "../pages/Authentication/Login";
-import Register from "../pages/Authentication/Register";
-import AccountRecovery from "../pages/Authentication/AccountRecovery";
-import Dashboard from "../pages/Dashboard";
-import ProtectedRoute from "../components/ProtectedRoute";
+// import Themes from "../pages/Themes";
+// import Login from "../pages/Authentication/Login";
+// import Register from "../pages/Authentication/Register";
+// import AccountRecovery from "../pages/Authentication/AccountRecovery";
+// import Dashboard from "../pages/Dashboard";
 import Layout from "../src/components/Layout";
+import { auth } from "../firebase";
+import Home from "../src/pages/Home";
+import ProtectedRoute from "../src/components/ProtectedRoute";
+import Login from "../src/pages/Authentication/Login";
 
 export default function Router() {
   auth.onAuthStateChanged((user) => {
@@ -23,26 +24,26 @@ export default function Router() {
       path: "/",
       element: (
         <Layout>
-          <Landing />
+          <Home />
         </Layout>
       ),
     },
-    {
-      path: "/dashboard",
-      element: (
-        <ProtectedRoute>
-          <Dashboard />
-        </ProtectedRoute>
-      ),
-    },
-    {
-      path: "/themes",
-      element: (
-        <Layout>
-          <Themes />
-        </Layout>
-      ),
-    },
+    // {
+    //   path: "/dashboard",
+    //   element: (
+    //     <ProtectedRoute>
+    //       <Dashboard />
+    //     </ProtectedRoute>
+    //   ),
+    // },
+    // {
+    //   path: "/themes",
+    //   element: (
+    //     <Layout>
+    //       <Themes />
+    //     </Layout>
+    //   ),
+    // },
     {
       path: "/auth/login",
       element: (
@@ -51,26 +52,26 @@ export default function Router() {
         </Layout>
       ),
     },
-    {
-      path: "/auth/register",
-      element: (
-        <Layout>
-          <Register />
-        </Layout>
-      ),
-    },
-    {
-      path: "/auth/recovery",
-      element: (
-        <Layout>
-          <AccountRecovery />
-        </Layout>
-      ),
-    },
-    {
-      path: "*",
-      element: <>404 Not Found</>,
-    },
+    // {
+    //   path: "/auth/register",
+    //   element: (
+    //     <Layout>
+    //       <Register />
+    //     </Layout>
+    //   ),
+    // },
+    // {
+    //   path: "/auth/recovery",
+    //   element: (
+    //     <Layout>
+    //       <AccountRecovery />
+    //     </Layout>
+    //   ),
+    // },
+    // {
+    //   path: "*",
+    //   element: <>404 Not Found</>,
+    // },
   ]);
 
   return <RouterProvider router={router} />;

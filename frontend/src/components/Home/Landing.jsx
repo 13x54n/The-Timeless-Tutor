@@ -15,7 +15,7 @@ export function Landing() {
                 <span className="home__landing__p1">Unleash the power of</span>{" "}
                 <br />
                 <span className="text-3xl md:text-[6rem] font-bold mt-1 leading-none home__landing__p2">
-                  Decetralized Learning Platform
+                  Decentralized Learning Platform
                 </span>
               </h1>
               <h1 className="text-gray-300 mt-2">&copy; The Timeless Tutor</h1>

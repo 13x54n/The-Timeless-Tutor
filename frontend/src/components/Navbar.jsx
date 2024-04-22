@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { Dialog, Popover } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+import { useNavigate } from "react-router-dom";
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const navigate = useNavigate()
 
   return (
     <header className="border-b-2">
@@ -11,8 +13,8 @@ export default function Navbar() {
         className="mx-auto flex max-w-7xl items-center justify-between p-3 lg:px-8"
         aria-label="Global"
       >
-        <div className="flex lg:flex-1">
-          <a href="#" className="-m-1.5 p-1.5">
+        <div className="flex lg:flex-1 cursor-pointer">
+          <a onClick={() => navigate("/")} className="-m-1.5 p-1.5">
             <span className="sr-only">The Timeless Tutor</span>
             <img
               className="h-10 w-auto"
@@ -34,7 +36,7 @@ export default function Navbar() {
         <Popover.Group className="hidden lg:flex lg:gap-x-12">
           <a
             href="#"
-            className="text-sm font-semibold leading-6 text-white-900 flex items-center gap-2"
+            className="text-sm font-semibold leading-6 text-white-900 flex items-center gap-2 cursor-pointer"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -55,7 +57,7 @@ export default function Navbar() {
 
           <a
             href="#"
-            className="text-sm font-semibold leading-6 text-white-900 flex items-center gap-2"
+            className="text-sm font-semibold leading-6 text-white-900 flex items-center gap-2 cursor-pointer"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -75,7 +77,7 @@ export default function Navbar() {
           </a>
           <a
             href="#"
-            className="text-sm font-semibold leading-6 text-white-900 flex items-center gap-2"
+            className="text-sm font-semibold leading-6 text-white-900 flex items-center gap-2 cursor-pointer"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -95,7 +97,7 @@ export default function Navbar() {
           </a>
           <a
             href="#"
-            className="text-sm font-semibold leading-6 text-white-900 flex items-center gap-2"
+            className="text-sm font-semibold leading-6 text-white-900 flex items-center gap-2 cursor-pointer"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -116,8 +118,8 @@ export default function Navbar() {
         </Popover.Group>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
           <a
-            href="#"
-            className="text-sm font-semibold leading-6 text-white-900 flex items-center gap-2"
+            onClick={() => navigate("/auth/login")}
+            className="text-sm font-semibold leading-6 text-white-900 flex items-center gap-2 cursor-pointer"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -146,7 +148,7 @@ export default function Navbar() {
         <div className="fixed inset-0 z-10" />
         <Dialog.Panel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
           <div className="flex items-center justify-between">
-            <a href="#" className="-m-1.5 p-1.5">
+            <a onClick={() => navigate("/")} className="-m-1.5 p-1.5">
               <span className="sr-only">The Timeless Tutor</span>
               <img
                 className="h-12 w-auto"
@@ -193,7 +195,7 @@ export default function Navbar() {
               </div>
               <div className="py-6">
                 <a
-                  href="#"
+                  onClick={() => navigate("/auth/login")}
                   className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-white-900 hover:bg-gray-50"
                 >
                   Log in
