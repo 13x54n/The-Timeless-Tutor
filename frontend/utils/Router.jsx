@@ -10,7 +10,7 @@ import Home from "../src/pages/Home";
 import ProtectedRoute from "../src/components/ProtectedRoute";
 import Login from "../src/pages/Authentication/Login";
 import Dashboard from "../src/pages/Dashboard";
-import Signup from '../src/pages/Authentication/Signup'
+import Signup from "../src/pages/Authentication/Signup";
 
 export default function Router() {
   auth.onAuthStateChanged((user) => {
@@ -34,7 +34,7 @@ export default function Router() {
       path: "/dashboard",
       element: (
         <ProtectedRoute>
-          <Dashboard />
+            <Dashboard />
         </ProtectedRoute>
       ),
     },

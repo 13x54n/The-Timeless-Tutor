@@ -1,0 +1,28 @@
+{
+    "rewrites": [
+      {
+        "source": "/",
+        "destination": "/"
+      },
+      {
+        "source": "/(.*)",
+        "destination": "/"
+      },
+      {
+        "source": "/auth/login",
+        "destination": "/auth/login"
+      },
+      {
+        "source": "/auth/signup",
+        "destination": "/auth/signup"
+      },
+      {
+        "source": "/auth/recovery",
+        "destination": "/auth/recovery"
+      },
+      {
+        "source": "/dashboard",
+        "destination": "/dashboard"
+      }
+    ]
+  }

@@ -17,7 +17,6 @@ export default function Login() {
       signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
           toast("Logged in successfully!");
-          // navigate("/dashboard");
           setUser(userCredential.user);
           console.log(userCredential)
         })

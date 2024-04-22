@@ -1,33 +1,51 @@
-import { Link, useNavigate } from "react-router-dom";
-import { signInWithEmailAndPassword } from "firebase/auth";
 import { toast } from "react-toastify";
 import { auth } from "../../../firebase";
-import { useContext, useState } from "react";
-import {AuthContext} from '../../contexts/Auth'
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
 
 export default function Login() {
-  const navigate = useNavigate();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const { user, setUser } = useContext(AuthContext);
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [confirmPassword, setConfirmPassword] = useState("");
+    const navigate = useNavigate()
 
-  const handleLogin = async (e) => {
-    e.preventDefault();
-    if (email !== "" && password !== "") {
-      signInWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-          toast("Logged in successfully!");
-          // navigate("/dashboard");
-          setUser(userCredential.user);
-          console.log(userCredential)
-        })
-        .catch((error) => {
-          const errorCode = error.code;
-          const errorMessage = error.message;
-          console.log(errorCode, errorMessage);
-        });
-    }
-  };
+    const handleUserRegistration = (e) => {
+        e.preventDefault();
+    
+        if (password === confirmPassword && email !== "" && password !== "") {
+          createUserWithEmailAndPassword(auth, email, password)
+            .then(async (userCredential) => {
+              toast("User Registered Successfully!");
+    
+              const user = userCredential.user;
+    
+              try {
+                const { uid, email } = user;
+    
+                // fetch(`${import.meta.env.VITE_API_URL}/user`, {
+                //   method: "POST",
+                //   headers: {
+                //     "Content-Type": "application/json",
+                //   },
+                //   body: JSON.stringify({
+                //     userUid: uid,
+                //     email: email,
+                //   }),
+                // });
+              } catch (error) {
+                console.log(error);
+              }
+            })
+            .catch((error) => {
+              const errorCode = error.code;
+              const errorMessage = error.message;
+    
+              console.log(errorCode, errorMessage);
+            });
+        } else {
+          toast.error("Password and Confirm didn't match!");
+        }
+      };
 
   return (
     <>
@@ -45,7 +63,7 @@ export default function Login() {
 
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
           <form
-            onSubmit={handleLogin}
+            onSubmit={handleUserRegistration}
             className="space-y-6"
           >
             <div>
@@ -110,8 +128,8 @@ export default function Login() {
                   autoComplete="current-password"
                   required
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
                   placeholder="**********"
                 />
               </div>
@@ -130,8 +148,8 @@ export default function Login() {
           <p className="mt-10 text-center text-sm text-gray-500">
             Already a member?{" "}
             <a
-              href="#"
-              className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
+            onClick={() => navigate("/auth/login")}
+              className="cursor-pointer font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
             >
               Login Instead
             </a>
