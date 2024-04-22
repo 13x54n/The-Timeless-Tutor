@@ -152,7 +152,7 @@ export default function Navbar() {
               <span className="sr-only">The Timeless Tutor</span>
               <img
                 className="h-12 w-auto"
-                src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
+                src="https://avatars.githubusercontent.com/u/135448616?s=400&u=74e9ea61cb4c7d10e70fea3138c49d8b437c644f&v=4"
                 alt=""
               />
             </a>
