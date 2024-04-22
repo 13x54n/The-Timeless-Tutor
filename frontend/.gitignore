@@ -23,6 +23,6 @@ dist-ssr
 *.sln
 *.sw?
 
-node_modules
+node_modules/
 *-lock.json
 *.lock
