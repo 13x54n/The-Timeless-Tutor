@@ -7,6 +7,11 @@ export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const navigate = useNavigate()
 
+  const handleNavigation = e => {
+    setMobileMenuOpen(false)
+    navigate(e)
+  }
+
   return (
     <header className="border-b-2">
       <nav
@@ -14,14 +19,14 @@ export default function Navbar() {
         aria-label="Global"
       >
         <div className="flex lg:flex-1 cursor-pointer items-center gap-2">
-          <a onClick={() => navigate("/")} className="-m-1.5 p-1.5">
+          <a onClick={() => handleNavigation("/")} className="-m-1.5 p-1.5">
             <img
               className="h-10 w-auto"
               src="https://avatars.githubusercontent.com/u/135448616?s=400&u=74e9ea61cb4c7d10e70fea3138c49d8b437c644f&v=4"
               alt=""
             />
           </a>
-            <span className="font-medium">The Timeless Tutor</span>
+            <span onClick={() => handleNavigation("/")} className="font-medium cursor-pointer">The Timeless Tutor</span>
         </div>
         <div className="flex lg:hidden">
           <button
@@ -118,7 +123,7 @@ export default function Navbar() {
         </Popover.Group>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
           <a
-            onClick={() => navigate("/auth/login")}
+            onClick={() => handleNavigation("/auth/login")}
             className="text-sm font-semibold leading-6 text-white-900 flex items-center gap-2 cursor-pointer"
           >
             <svg
@@ -148,7 +153,7 @@ export default function Navbar() {
         <div className="fixed inset-0 z-10" />
         <Dialog.Panel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
           <div className="flex items-center justify-between">
-            <a onClick={() => navigate("/")} className="-m-1.5 p-1.5">
+            <a onClick={() => handleNavigation("/")} className="-m-1.5 p-1.5">
               <img
                 className="h-12 w-auto"
                 src="https://avatars.githubusercontent.com/u/135448616?s=400&u=74e9ea61cb4c7d10e70fea3138c49d8b437c644f&v=4"
@@ -194,7 +199,7 @@ export default function Navbar() {
               </div>
               <div className="py-6">
                 <a
-                  onClick={() => navigate("/auth/login")}
+                  onClick={() => handleNavigation("/auth/login")}
                   className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-white-900 hover:bg-gray-50"
                 >
                   Log in

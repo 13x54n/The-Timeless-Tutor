@@ -9,6 +9,8 @@ import { auth } from "../firebase";
 import Home from "../src/pages/Home";
 import ProtectedRoute from "../src/components/ProtectedRoute";
 import Login from "../src/pages/Authentication/Login";
+import Dashboard from "../src/pages/Dashboard";
+import Signup from '../src/pages/Authentication/Signup'
 
 export default function Router() {
   auth.onAuthStateChanged((user) => {
@@ -28,14 +30,14 @@ export default function Router() {
         </Layout>
       ),
     },
-    // {
-    //   path: "/dashboard",
-    //   element: (
-    //     <ProtectedRoute>
-    //       <Dashboard />
-    //     </ProtectedRoute>
-    //   ),
-    // },
+    {
+      path: "/dashboard",
+      element: (
+        <ProtectedRoute>
+          <Dashboard />
+        </ProtectedRoute>
+      ),
+    },
     // {
     //   path: "/themes",
     //   element: (
@@ -52,14 +54,14 @@ export default function Router() {
         </Layout>
       ),
     },
-    // {
-    //   path: "/auth/register",
-    //   element: (
-    //     <Layout>
-    //       <Register />
-    //     </Layout>
-    //   ),
-    // },
+    {
+      path: "/auth/signup",
+      element: (
+        <Layout>
+          <Signup />
+        </Layout>
+      ),
+    },
     // {
     //   path: "/auth/recovery",
     //   element: (
