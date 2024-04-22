@@ -13,15 +13,15 @@ export default function Navbar() {
         className="mx-auto flex max-w-7xl items-center justify-between p-3 lg:px-8"
         aria-label="Global"
       >
-        <div className="flex lg:flex-1 cursor-pointer">
+        <div className="flex lg:flex-1 cursor-pointer items-center gap-2">
           <a onClick={() => navigate("/")} className="-m-1.5 p-1.5">
-            <span className="sr-only">The Timeless Tutor</span>
             <img
               className="h-10 w-auto"
               src="https://avatars.githubusercontent.com/u/135448616?s=400&u=74e9ea61cb4c7d10e70fea3138c49d8b437c644f&v=4"
               alt=""
             />
           </a>
+            <span className="font-medium">The Timeless Tutor</span>
         </div>
         <div className="flex lg:hidden">
           <button
@@ -149,7 +149,7 @@ export default function Navbar() {
         <Dialog.Panel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
           <div className="flex items-center justify-between">
             <a onClick={() => navigate("/")} className="-m-1.5 p-1.5">
-              <span className="sr-only">The Timeless Tutor</span>
+              <span className="">The Timeless Tutor</span>
               <img
                 className="h-12 w-auto"
                 src="https://avatars.githubusercontent.com/u/135448616?s=400&u=74e9ea61cb4c7d10e70fea3138c49d8b437c644f&v=4"
