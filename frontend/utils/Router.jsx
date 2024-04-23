@@ -12,6 +12,9 @@ import Signup from "../src/pages/Authentication/Signup";
 import Courses from "../src/pages/Courses";
 import { useContext } from "react";
 import { AuthContext } from "../src/contexts/Auth";
+import Roadmap from "../src/pages/Roadmap";
+import Business from "../src/pages/Business";
+import AboutUs from "../src/pages/AboutUs";
 
 export default function Router() {
   const { user } = useContext(AuthContext);
@@ -42,6 +45,30 @@ export default function Router() {
       element: (
         <Layout>
           <Courses />
+        </Layout>
+      ),
+    },
+    {
+      path: "/roadmap",
+      element: (
+        <Layout>
+          <Roadmap />
+        </Layout>
+      ),
+    },
+    {
+      path: "/business",
+      element: (
+        <Layout>
+          <Business />
+        </Layout>
+      ),
+    },
+    {
+      path: "/about-us",
+      element: (
+        <Layout>
+          <AboutUs />
         </Layout>
       ),
     },

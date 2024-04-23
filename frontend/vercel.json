@@ -23,6 +23,22 @@
       {
         "source": "/dashboard",
         "destination": "/dashboard"
+      },
+      {
+        "source": "/courses",
+        "destination": "/courses"
+      },
+      {
+        "source": "/roadmap",
+        "destination": "/roadmap"
+      },
+      {
+        "source": "/business",
+        "destination": "/business"
+      },
+      {
+        "source": "/about-us",
+        "destination": "/about-us"
       }
     ]
   }

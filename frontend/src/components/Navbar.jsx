@@ -55,7 +55,7 @@ export default function Navbar() {
         </div>
         <Popover.Group className="hidden lg:flex lg:gap-x-12">
           <a
-            href="#"
+            onClick={() => handleNavigation("/roadmap")}
             className="text-sm font-semibold leading-6 text-white-900 flex items-center gap-2 cursor-pointer"
           >
             <svg
@@ -76,7 +76,7 @@ export default function Navbar() {
           </a>
 
           <a
-            href="#"
+            onClick={() => handleNavigation("/courses")}
             className="text-sm font-semibold leading-6 text-white-900 flex items-center gap-2 cursor-pointer"
           >
             <svg
@@ -96,7 +96,7 @@ export default function Navbar() {
             Courses
           </a>
           <a
-            href="#"
+            onClick={() => handleNavigation("/business")}
             className="text-sm font-semibold leading-6 text-white-900 flex items-center gap-2 cursor-pointer"
           >
             <svg
@@ -116,7 +116,7 @@ export default function Navbar() {
             Business
           </a>
           <a
-            href="#"
+            onClick={() => handleNavigation("/about-us")}
             className="text-sm font-semibold leading-6 text-white-900 flex items-center gap-2 cursor-pointer"
           >
             <svg
@@ -300,25 +300,25 @@ export default function Navbar() {
             <div className="-my-6 divide-y divide-white-500/10">
               <div className="space-y-2 py-6">
                 <a
-                  href="#"
+                  onClick={() => handleNavigation("/roadmap")}
                   className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white-900 hover:bg-gray-50"
                 >
                   Roadmap
                 </a>
                 <a
-                  href="#"
+                  onClick={() => handleNavigation("/courses")}
                   className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white-900 hover:bg-gray-50"
                 >
                   Courses
                 </a>
                 <a
-                  href="#"
+                  onClick={() => handleNavigation("/business")}
                   className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white-900 hover:bg-gray-50"
                 >
                   Business
                 </a>
                 <a
-                  href="#"
+                  onClick={() => handleNavigation("/about-us")}
                   className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white-900 hover:bg-gray-50"
                 >
                   About Us
