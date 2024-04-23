@@ -19,6 +19,7 @@ export default function Login() {
         .then((userCredential) => {
           toast("Logged in successfully!");
           setUser(userCredential.user);
+          navigate("/")
         })
         .catch((error) => {
           const errorCode = error.code;

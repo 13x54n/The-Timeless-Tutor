@@ -10,7 +10,7 @@ export default function Courses() {
         className="w-[100vw]"
       />
 
-      <div className="mx-[5vw] my-3">
+      <div className="mx-[5vw] my-3 mt-8">
         <h1 className="mt-2 text-3xl font-medium tracking-tight text-gray-900 sm:text-4xl">
           A better workflow
         </h1>
