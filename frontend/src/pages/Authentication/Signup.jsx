@@ -2,6 +2,8 @@ import { toast } from "react-toastify";
 import { auth } from "../../../firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { googleSignIn } from "../../../utils/Authentication";
 
 export default function Login() {
     const [email, setEmail] = useState("");
@@ -141,6 +143,16 @@ export default function Login() {
                 className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
               >
                 Sign Up
+              </button>
+            </div>
+
+            <div>
+              <button
+                onClick={() => googleSignIn()}
+                type="button"
+                className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+              >
+                Sign Up with Google
               </button>
             </div>
           </form>

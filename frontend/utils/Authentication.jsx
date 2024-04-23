@@ -61,7 +61,6 @@ export const googleSignIn = () => {
       const credential = GoogleAuthProvider.credentialFromResult(result);
       const token = credential.accessToken;
       const user = result.user;
-      console.log(user);
     })
     .catch((error) => {
       // Handle Errors here.

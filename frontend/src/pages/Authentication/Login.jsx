@@ -4,6 +4,7 @@ import { toast } from "react-toastify";
 import { auth } from "../../../firebase";
 import { useContext, useState } from "react";
 import {AuthContext} from '../../contexts/Auth'
+import { googleSignIn } from "../../../utils/Authentication";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -18,7 +19,6 @@ export default function Login() {
         .then((userCredential) => {
           toast("Logged in successfully!");
           setUser(userCredential.user);
-          console.log(userCredential)
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -109,13 +109,22 @@ export default function Login() {
                 Sign in
               </button>
             </div>
+            <div>
+              <button
+                onClick={() => googleSignIn()}
+                type="button"
+                className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+              >
+                Sign in with Google
+              </button>
+            </div>
           </form>
 
           <p className="mt-10 text-center text-sm text-gray-500">
             Not a member?{" "}
             <a
-              href="#"
-              className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
+              onClick={() => navigate("/auth/signup")}
+              className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500 cursor-pointer"
             >
               Create an account
             </a>

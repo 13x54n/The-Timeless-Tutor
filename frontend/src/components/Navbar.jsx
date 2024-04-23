@@ -1,16 +1,26 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Dialog, Popover } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../contexts/Auth";
+import { Fragment } from "react";
+import { Menu, Transition } from "@headlessui/react";
+import { ChevronDownIcon } from "@heroicons/react/20/solid";
+import { auth } from "../../firebase";
+
+function classNames(...classes) {
+  return classes.filter(Boolean).join(" ");
+}
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  const { user } = useContext(AuthContext);
 
-  const handleNavigation = e => {
-    setMobileMenuOpen(false)
-    navigate(e)
-  }
+  const handleNavigation = (e) => {
+    setMobileMenuOpen(false);
+    navigate(e);
+  };
 
   return (
     <header className="border-b-2">
@@ -26,7 +36,12 @@ export default function Navbar() {
               alt=""
             />
           </a>
-            <span onClick={() => handleNavigation("/")} className="font-medium cursor-pointer">The Timeless Tutor</span>
+          <span
+            onClick={() => handleNavigation("/")}
+            className="font-medium cursor-pointer"
+          >
+            The Timeless Tutor
+          </span>
         </div>
         <div className="flex lg:hidden">
           <button
@@ -122,26 +137,134 @@ export default function Navbar() {
           </a>
         </Popover.Group>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-          <a
-            onClick={() => handleNavigation("/auth/login")}
-            className="text-sm font-semibold leading-6 text-white-900 flex items-center gap-2 cursor-pointer"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={1.5}
-              stroke="currentColor"
-              className="w-5 h-5"
+          {user ? (
+            <div className="flex -space-x-1">
+              <Menu as="div" className="relative inline-block text-left">
+                <div>
+                  <Menu.Button className="inline-flex w-full items-center justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm hover:bg-gray-50">
+                    {user.photoURL ? 
+                    
+                    <img
+                      className="inline-block h-8 w-8 rounded-full ring-2 ring-white"
+                      src={user.photoURL}
+                      alt=""
+                    />:<span className="text-lg bg-[#dfe4ea] w-8 h-8 flex items-center justify-center rounded-full">{user.email[0]}</span>
+                  }
+                    {user.email.split("@")[0]}
+                    <ChevronDownIcon
+                      className="-mr-1 h-5 w-5 text-gray-400"
+                      aria-hidden="true"
+                    />
+                  </Menu.Button>
+                </div>
+
+                <Transition
+                  as={Fragment}
+                  enter="transition ease-out duration-100"
+                  enterFrom="transform opacity-0 scale-95"
+                  enterTo="transform opacity-100 scale-100"
+                  leave="transition ease-in duration-75"
+                  leaveFrom="transform opacity-100 scale-100"
+                  leaveTo="transform opacity-0 scale-95"
+                >
+                  <Menu.Items className="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                    <div className="py-1">
+                      <Menu.Item>
+                        {({ active }) => (
+                          <a
+                            href="#"
+                            className={classNames(
+                              active
+                                ? "bg-gray-100 text-gray-900"
+                                : "text-gray-700",
+                              "block px-4 py-2 text-sm"
+                            )}
+                          >
+                            Account settings
+                          </a>
+                        )}
+                      </Menu.Item>
+                      <Menu.Item>
+                        {({ active }) => (
+                          <a
+                            href="#"
+                            className={classNames(
+                              active
+                                ? "bg-gray-100 text-gray-900"
+                                : "text-gray-700",
+                              "block px-4 py-2 text-sm"
+                            )}
+                          >
+                            Support
+                          </a>
+                        )}
+                      </Menu.Item>
+                      <Menu.Item>
+                        {({ active }) => (
+                          <a
+                            href="#"
+                            className={classNames(
+                              active
+                                ? "bg-gray-100 text-gray-900"
+                                : "text-gray-700",
+                              "block px-4 py-2 text-sm"
+                            )}
+                          >
+                            License
+                          </a>
+                        )}
+                      </Menu.Item>
+                      <form
+                        onSubmit={() =>
+                          auth
+                            .signOut()
+                            .then(() => navigate("/"))
+                            .catch((err) => console.log(err))
+                        }
+                      >
+                        <Menu.Item>
+                          {({ active }) => (
+                            <button
+                              type="submit"
+                              className={classNames(
+                                active
+                                  ? "bg-gray-100 text-gray-900"
+                                  : "text-gray-700",
+                                "block w-full px-4 py-2 text-left text-sm"
+                              )}
+                            >
+                              Sign out
+                            </button>
+                          )}
+                        </Menu.Item>
+                      </form>
+                    </div>
+                  </Menu.Items>
+                </Transition>
+              </Menu>
+            </div>
+          ) : (
+            <a
+              onClick={() => handleNavigation("/auth/login")}
+              className="text-sm font-semibold leading-6 text-white-900 flex items-center gap-2 cursor-pointer"
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M7.864 4.243A7.5 7.5 0 0 1 19.5 10.5c0 2.92-.556 5.709-1.568 8.268M5.742 6.364A7.465 7.465 0 0 0 4.5 10.5a7.464 7.464 0 0 1-1.15 3.993m1.989 3.559A11.209 11.209 0 0 0 8.25 10.5a3.75 3.75 0 1 1 7.5 0c0 .527-.021 1.049-.064 1.565M12 10.5a14.94 14.94 0 0 1-3.6 9.75m6.633-4.596a18.666 18.666 0 0 1-2.485 5.33"
-              />
-            </svg>
-            Log in <span aria-hidden="true">&rarr;</span>
-          </a>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+                className="w-5 h-5"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M7.864 4.243A7.5 7.5 0 0 1 19.5 10.5c0 2.92-.556 5.709-1.568 8.268M5.742 6.364A7.465 7.465 0 0 0 4.5 10.5a7.464 7.464 0 0 1-1.15 3.993m1.989 3.559A11.209 11.209 0 0 0 8.25 10.5a3.75 3.75 0 1 1 7.5 0c0 .527-.021 1.049-.064 1.565M12 10.5a14.94 14.94 0 0 1-3.6 9.75m6.633-4.596a18.666 18.666 0 0 1-2.485 5.33"
+                />
+              </svg>
+              Log in <span aria-hidden="true">&rarr;</span>
+            </a>
+          )}
         </div>
       </nav>
       <Dialog
