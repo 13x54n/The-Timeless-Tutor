@@ -75,7 +75,9 @@ export default function Router() {
     },
     {
       path: "/auth/login",
-      element: (
+      element: user ? (
+        <Navigate to="/dashboard" />
+      ) : (
         <Layout>
           <Login />
         </Layout>
@@ -83,7 +85,9 @@ export default function Router() {
     },
     {
       path: "/auth/signup",
-      element: (
+      element: user ? (
+        <Navigate to="/dashboard" />
+      ) : (
         <Layout>
           <Signup />
         </Layout>
@@ -99,7 +103,11 @@ export default function Router() {
     // },
     {
       path: "*",
-      element: <Layout><NotFound/></Layout>,
+      element: (
+        <Layout>
+          <NotFound />
+        </Layout>
+      ),
     },
   ]);
 
