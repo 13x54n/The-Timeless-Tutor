@@ -100,7 +100,7 @@ export default function CoursesFilters() {
                 <Dialog.Panel className="relative ml-auto flex h-full w-full max-w-xs flex-col overflow-y-auto bg-white py-4 pb-12 shadow-xl">
                   <div className="flex items-center justify-between px-4">
                     <h2 className="text-lg font-medium text-gray-900">
-                      Filters
+                      🔩 Filters
                     </h2>
                     <button
                       type="button"
@@ -182,7 +182,7 @@ export default function CoursesFilters() {
 
         <main className="mx-[5vw]">
           <div className="flex items-baseline justify-between border-b border-gray-200 pb-6 mt-5">
-            <h1 className="tracking-tight text-gray-900">Filters</h1>
+            <h1 className="tracking-tight text-gray-900">🔩 Filters</h1>
 
             <div className="flex items-center">
               <Menu as="div" className="relative inline-block text-left">
@@ -260,6 +260,7 @@ export default function CoursesFilters() {
 
                 {filters.map((section) => (
                   <Disclosure
+                  defaultOpen
                     as="div"
                     key={section.id}
                     className="border-b border-gray-200 py-6"
@@ -337,13 +338,13 @@ export default function CoursesFilters() {
                     </svg>
                     <input
                       type="text"
-                      className="text-md border-0 focus:border-none focus:ring-0 focus:outline-none"
+                      className="text-sm border-0 focus:border-none focus:ring-0 focus:outline-none"
                       placeholder="Search Courses, Topics..."
                     />
                   </div>
                 </div>
 
-                <CourseLists/>
+                <CourseLists />
               </div>
             </div>
           </section>

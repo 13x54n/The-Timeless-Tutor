@@ -12,9 +12,9 @@ export default function Courses() {
 
       <div className="mx-[5vw] my-3 mt-8">
         <h1 className="mt-2 text-3xl font-medium tracking-tight text-gray-900 sm:text-4xl">
-          A better workflow
+          🎓 Explore all learning content
         </h1>
-        <p className="mt-2 text-lg leading-8 text-gray-700">
+        <p className="mt-2 text-md leading-8 text-gray-700">
           Aliquet nec orci mattis amet quisque ullamcorper neque, nibh sem. At
           arcu, sit dui mi.
         </p>
