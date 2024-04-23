@@ -1,30 +1,27 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-// import Themes from "../pages/Themes";
-// import Login from "../pages/Authentication/Login";
-// import Register from "../pages/Authentication/Register";
-// import AccountRecovery from "../pages/Authentication/AccountRecovery";
-// import Dashboard from "../pages/Dashboard";
+import {
+  createBrowserRouter,
+  Navigate,
+  RouterProvider,
+} from "react-router-dom";
 import Layout from "../src/components/Layout";
-import { auth } from "../firebase";
 import Home from "../src/pages/Home";
 import ProtectedRoute from "../src/components/ProtectedRoute";
 import Login from "../src/pages/Authentication/Login";
 import Dashboard from "../src/pages/Dashboard";
 import Signup from "../src/pages/Authentication/Signup";
+import Courses from "../src/pages/Courses";
+import { useContext } from "react";
+import { AuthContext } from "../src/contexts/Auth";
 
 export default function Router() {
-  auth.onAuthStateChanged((user) => {
-    if (user) {
-      //   setIsAuthenticated(true);
-    } else {
-      //   setIsAuthenticated(false);
-    }
-  });
+  const { user } = useContext(AuthContext);
 
   const router = createBrowserRouter([
     {
       path: "/",
-      element: (
+      element: user ? (
+        <Navigate to="/dashboard" />
+      ) : (
         <Layout>
           <Home />
         </Layout>
@@ -32,20 +29,22 @@ export default function Router() {
     },
     {
       path: "/dashboard",
-      element: (
+      element: !user ? (
+        <Navigate to="/" />
+      ) : (
         <ProtectedRoute>
-            <Dashboard />
+          <Dashboard />
         </ProtectedRoute>
       ),
     },
-    // {
-    //   path: "/themes",
-    //   element: (
-    //     <Layout>
-    //       <Themes />
-    //     </Layout>
-    //   ),
-    // },
+    {
+      path: "/courses",
+      element: (
+        <Layout>
+          <Courses />
+        </Layout>
+      ),
+    },
     {
       path: "/auth/login",
       element: (

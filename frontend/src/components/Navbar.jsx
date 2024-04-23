@@ -142,14 +142,18 @@ export default function Navbar() {
               <Menu as="div" className="relative inline-block text-left">
                 <div>
                   <Menu.Button className="inline-flex w-full items-center justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm hover:bg-gray-50">
-                    {user.photoURL ? 
-                    
-                    <img
-                      className="inline-block h-8 w-8 rounded-full ring-2 ring-white"
-                      src={user.photoURL}
-                      alt=""
-                    />:<span className="text-lg bg-[#dfe4ea] w-8 h-8 flex items-center justify-center rounded-full">{user.email[0]}</span>
-                  }
+                    {console.log(user.photoURL)}
+                    {user.photoURL !== null ? (
+                      <img
+                        className="inline-block h-8 w-8 rounded-full ring-2 ring-white"
+                        src={user.photoURL}
+                        alt={user.email}
+                      />
+                    ) : (
+                      <span className="text-lg bg-[#dfe4ea] w-8 h-8 flex items-center justify-center rounded-full">
+                        {user.email[0]}
+                      </span>
+                    )}
                     {user.email.split("@")[0]}
                     <ChevronDownIcon
                       className="-mr-1 h-5 w-5 text-gray-400"
