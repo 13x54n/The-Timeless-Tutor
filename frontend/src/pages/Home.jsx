@@ -7,8 +7,7 @@ import Partners from "../components/Home/Partners";
 export default function Home() {
   return (
     <div>
-      {/* {window.innerWidth > 576 && <Landing />} */}
-      <Landing/>
+      {window.innerWidth > 576 && <Landing />}
       <ContentSection />
       <Specifications />
       <Partners />
