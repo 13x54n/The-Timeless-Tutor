@@ -15,6 +15,7 @@ import { AuthContext } from "../src/contexts/Auth";
 import Roadmap from "../src/pages/Roadmap";
 import Business from "../src/pages/Business";
 import AboutUs from "../src/pages/AboutUs";
+import NotFound from "../src/pages/404";
 
 export default function Router() {
   const { user } = useContext(AuthContext);
@@ -96,10 +97,10 @@ export default function Router() {
     //     </Layout>
     //   ),
     // },
-    // {
-    //   path: "*",
-    //   element: <>404 Not Found</>,
-    // },
+    {
+      path: "*",
+      element: <Layout><NotFound/></Layout>,
+    },
   ]);
 
   return <RouterProvider router={router} />;
