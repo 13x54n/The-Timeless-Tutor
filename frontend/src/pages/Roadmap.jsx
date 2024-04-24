@@ -19,7 +19,7 @@ export default function Roadmap() {
           In mi viverra elit nunc.
         </p>
       </div>
-      <div className="py-20 flex flex-col lg:flex-row items-center justify-center bg-white w-full gap-4 mx-auto px-[5vw] ">
+      <div className="pb-20 flex flex-col lg:flex-row items-center justify-center bg-white w-full gap-4 mx-auto px-[5vw] ">
         <Card
           title="Phase 1"
           icon={
