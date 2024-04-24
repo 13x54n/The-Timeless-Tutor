@@ -1,4 +1,3 @@
-"use client";
 import React from "react";
 import { ContainerScroll } from "../ui/control-scroll-animation";
 import LandingImage from  '../../assets/Landing.png'
