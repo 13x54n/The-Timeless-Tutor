@@ -6,7 +6,7 @@ import { CanvasRevealEffect } from "../components/ui/canvas-reveal-effect";
 export default function Roadmap() {
   return (
     <>
-      <div className="mx-auto max-w-2xl lg:text-center mt-10">
+      <div className="mx-auto max-w-2xl lg:text-center mt-10 px-[5vw]">
         <h2 className="text-base font-semibold leading-7 text-indigo-600">
           Deploy faster
         </h2>
