@@ -16,6 +16,7 @@ import Roadmap from "../src/pages/Roadmap";
 import Business from "../src/pages/Business";
 import AboutUs from "../src/pages/AboutUs";
 import NotFound from "../src/pages/404";
+import Profile from "../src/pages/Profile";
 
 export default function Router() {
   const { user } = useContext(AuthContext);
@@ -38,6 +39,16 @@ export default function Router() {
       ) : (
         <ProtectedRoute>
           <Dashboard />
+        </ProtectedRoute>
+      ),
+    },
+    {
+      path: "/profile",
+      element: !user ? (
+        <Navigate to="/" />
+      ) : (
+        <ProtectedRoute>
+          <Profile />
         </ProtectedRoute>
       ),
     },

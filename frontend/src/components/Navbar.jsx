@@ -175,7 +175,7 @@ export default function Navbar() {
                       <Menu.Item>
                         {({ active }) => (
                           <a
-                            href="#"
+                            onClick={() => navigate("/profile")}
                             className={classNames(
                               active
                                 ? "bg-gray-100 text-gray-900"
