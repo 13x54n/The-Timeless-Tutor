@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { toast } from "react-toastify";
 import { auth } from "../../../firebase";
@@ -80,7 +80,7 @@ export default function Login() {
                 </label>
                 <div className="text-sm">
                   <a
-                    href="#"
+                    onClick={() => navigate("/auth/recovery")}
                     className="font-semibold text-indigo-600 hover:text-indigo-500"
                   >
                     Forgot password?

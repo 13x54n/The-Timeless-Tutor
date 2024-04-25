@@ -17,6 +17,7 @@ import Business from "../src/pages/Business";
 import AboutUs from "../src/pages/AboutUs";
 import NotFound from "../src/pages/404";
 import Profile from "../src/pages/Profile";
+import Recovery from "../src/pages/Authentication/Recovery";
 
 export default function Router() {
   const { user } = useContext(AuthContext);
@@ -44,9 +45,7 @@ export default function Router() {
     },
     {
       path: "/profile",
-      element: !user ? (
-        <Navigate to="/" />
-      ) : (
+      element: (
         <ProtectedRoute>
           <Profile />
         </ProtectedRoute>
@@ -104,14 +103,14 @@ export default function Router() {
         </Layout>
       ),
     },
-    // {
-    //   path: "/auth/recovery",
-    //   element: (
-    //     <Layout>
-    //       <AccountRecovery />
-    //     </Layout>
-    //   ),
-    // },
+    {
+      path: "/auth/recovery",
+      element: (
+        <Layout>
+          <Recovery />
+        </Layout>
+      ),
+    },
     {
       path: "*",
       element: (

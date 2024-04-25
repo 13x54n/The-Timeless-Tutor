@@ -124,8 +124,8 @@ export default function Login() {
               </div>
               <div className="mt-2">
                 <input
-                  id="password"
-                  name="password"
+                  id="confirmPassword"
+                  name="confirmPassword"
                   type="password"
                   autoComplete="current-password"
                   required

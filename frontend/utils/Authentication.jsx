@@ -11,6 +11,7 @@ import {
   signOut,
 } from "firebase/auth";
 import { auth } from "../firebase";
+import { toast } from "react-toastify";
 // import toast from "react-toastify";
 
 /**
